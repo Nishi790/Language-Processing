@@ -2,7 +2,7 @@ import nltk,re,pprint
 from nltk import word_tokenize
 
 def questionWord(text):
-	questionwords=["who","what","where","when","why","how"]
+	questionwords=["who","what","where","when","why","how", "which"]
 	if text[0].casefold() in questionwords:
 		return True
 	else:
@@ -28,6 +28,11 @@ def isQuestion(text):
 	if start:
 		if verbFollows(words):
 			return True
+		elif words[0][0].casefold()=="which":
+			if "N" in words[1][1]:
+				return True
+			else:
+				return False
 		else:
 			return False
 	elif (words[0][1]=="VBP" or words[0][1]=="VBD"):

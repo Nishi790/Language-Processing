@@ -35,7 +35,8 @@ def supportQs(verbs,sentence):
 		
 
 		
-def isQuestion(verbs,text):
+def isQuestion(text):
+	verbs=['is','are','was','were','did','does','do','will','have','has','had']
 	sentences=splitSentences(text)
 	for sentence in sentences:
 		a=starts(verbs,"What", sentence)
@@ -45,6 +46,7 @@ def isQuestion(verbs,text):
 		e=starts(verbs,"Why", sentence)
 		f=starts(verbs,"How",sentence)
 		g=supportQs(verbs,sentence)
+		h=starts(verbs,"Which", sentence)
 		if a:
 			print("\""+sentence+"\" is a question.")
 		elif b:
@@ -59,8 +61,10 @@ def isQuestion(verbs,text):
 			print("\""+sentence+"\" is a question.")
 		elif g:
 			print("\""+sentence+"\" is a question.")
+		elif h:
+			print("\""+sentence+"\" is a question.")
 		else:
 			print("\""+sentence+"\" is not a question.")
 
-verbs=['is','are','was','were','did','does','do','will','have','has','had']
-isQuestion(verbs,"Who are you? What you want is pie. Are you my mother? Do you know my mother?")
+
+isQuestion("Who are you? What you want is pie. Are you my mother? Do you know my mother?")
